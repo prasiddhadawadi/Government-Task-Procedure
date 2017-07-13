@@ -1,0 +1,61 @@
+ <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                    <a class="navbar-brand" href="#home">Home</a>
+                    </li>
+                    <li>
+                        <a href="#img-bg">Procedure</a>
+                    </li>
+                   
+                    <li>
+                        <a href="#contact-img-start">Contact</a>
+                    </li>
+
+                    <ul class="nav navbar-nav navbar-right">
+                    <?php if(@$_SESSION['login'] == true){ ?>
+                    <li><a href="profile.php"> <?php echo $username; ?></a></li>
+                    <li><a href="logout.php">Logout</a></li>
+                    <?php } else { ?>
+
+                      <li><a href="loginform.php">Log-in</a></li>
+                      <?php } ?>
+                    </ul>
+                </ul>
+            </div>
+            <script type="text/javascript">
+                function scrollNav() {
+  $('.nav a').click(function(){  
+    //Toggle Class
+    $(".active").removeClass("active");      
+    $(this).closest('li').addClass("active");
+    var theClass = $(this).attr("class");
+    $('.'+theClass).parent('li').addClass('active');
+    //Animate
+    $('html, body').stop().animate({
+        scrollTop: $( $(this).attr('href') ).offset().top - 160
+    }, 400);
+    return false;
+  });
+  $('.scrollTop a').scrollTop();
+}
+scrollNav();
+            </script>
+
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
